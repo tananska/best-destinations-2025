@@ -7,6 +7,8 @@ const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Catalog', href: '/catalog' },
     { name: 'About', href: '/about' },
+    { name: 'Register', href: '/register' },
+    { name: 'Login', href: '/login' },
 ]
 
 
@@ -17,12 +19,12 @@ export default function Header(){
         <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
             <div className="flex lg:flex-1">
-                <Link to="#" className="-m-1.5 p-1.5">
-                    <span className="sr-only">Your Company</span>
+                <Link to="/" className="-m-1.5 p-1.5">
+                    <span className="sr-only">Back to home</span>
                     <img
                         alt=""
-                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                        className="h-8 w-auto"
+                        src="https://t4.ftcdn.net/jpg/00/35/85/49/360_F_35854996_U93wcfpw8bIJrO1ftyC92aLEh0AlOMSj.jpg"
+                        className="h-20 w-20"
                     />
                 </Link>
             </div>
@@ -44,23 +46,12 @@ export default function Header(){
                 ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <Link to="#" className="text-sm/6 font-semibold text-gray-900">
-                    Log in <span aria-hidden="true">&rarr;</span>
-                </Link>
             </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
             <div className="fixed inset-0 z-50" />
             <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
-                    <Link to="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
-                        <img
-                            alt=""
-                            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                            className="h-8 w-auto"
-                        />
-                    </Link>
                     <button
                         type="button"
                         onClick={() => setMobileMenuOpen(false)}
@@ -82,14 +73,6 @@ export default function Header(){
                                     {item.name}
                                 </Link>
                             ))}
-                        </div>
-                        <div className="py-6">
-                            <Link
-                                to="#"
-                                className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                            >
-                                Log in
-                            </Link>
                         </div>
                     </div>
                 </div>
