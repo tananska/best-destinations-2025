@@ -9,6 +9,7 @@ import Details from './components/Details'
 import Create from './components/Create'
 import Login from './components/Login'
 import Register from './components/Register'
+import Notfound from './components/Notfound'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
+          <Route path="/*" element={<Notfound />} />
         </Routes>
       </div>
       <Footer />
