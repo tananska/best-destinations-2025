@@ -2,7 +2,7 @@ import { Link } from "react-router"
 
 export default function Register() {
     return (
-        <section className="relative flex items-center h-screen">
+        <section className="relative flex items-center h-screen bg-gray-100">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
