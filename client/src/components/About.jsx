@@ -1,7 +1,7 @@
 export default function About() {
     return (
 
-        <section className="relative pt-16 bg-blueGray-50 flex items-center justify-center min-h-screen">
+        <section className="relative pt-16 bg-gray-100 flex items-center justify-center min-h-screen">
             <div className="container mx-auto">
                 <div className="flex flex-wrap items-center">
                     <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">
