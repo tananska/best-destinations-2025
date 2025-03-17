@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react"
 import { Link } from "react-router"
+import { useEffect, useState } from "react"
 
 export default function Catalog() {
-    const [destinations,setDestinations] = useState([]);
+    const [destinations, setDestinations] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:3030/jsonstore/destinations')
-        .then(data => data.json())
-        .then(result => setDestinations(Object.values(result)));
-    },[])
+            .then(response => response.json())
+            .then(result => setDestinations(Object.values(result)));
+    }, []);
 
     return (
         <div className="bg-gray-100">

@@ -1,4 +1,4 @@
-import homeView from '../../../public/images/homeView.jpg';
+import homeView from '/images/homeView.jpg';
 export default function Home() {
     return (
 

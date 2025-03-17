@@ -3,14 +3,14 @@ import { useNavigate } from "react-router";
 export default function Create() {
   const navigate = useNavigate()
   const formSubmit = async (formData) => {
-    const data = Object.fromEntries(formData);
-    await fetch('http://localhost:3030/jsonstore/destinations', {
+    const destinationData = Object.fromEntries(formData);
+    fetch('http://localhost:3030/jsonstore/destinations', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    });
+      body: destinationData,
+    })
     navigate('/catalog');
   }
 
