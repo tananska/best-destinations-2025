@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router"
+
 export default function Details() {
+    const [destination, setDestination] = useState({});
+    const { destinationId } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:3030/jsonstore/destinations/${destinationId}`)
+            .then(data => data.json())
+            .then(result => setDestination(result));
+    }, []);
+
     return (
         <>
             <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
@@ -22,43 +33,23 @@ export default function Details() {
                     <div className="space-y-5 md:space-y-8">
 
                         <figure>
-                            <img className="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80" alt="Blog Image" /> 
+                            <img className="w-full object-cover rounded-xl" src={destination.imageUrl} alt={destination.name} />
                         </figure>
-
-                        <p className="text-lg text-gray-800 dark:text-neutral-200">As we've grown, we've seen how Preline has helped companies such as Spotify, Microsoft, Airbnb, Facebook, and Intercom bring their designers closer together to create amazing things. We've also learned that when the culture of sharing is brought in earlier, the better teams adapt and communicate with one another.</p>
-
-                        <p className="text-lg text-gray-800 dark:text-neutral-200">That's why we are excited to share that we now have a <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500" href="#">free version of Preline</a>, which will allow individual designers, startups and other small teams a chance to create a culture of openness early on.</p>
-
-                        <figure>
-                            <img className="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272498380-eb330b61f3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80" alt="Blog Image" /> 
-                        </figure>
-
                         <div className="space-y-3">
-                            <h3 className="text-2xl font-semibold dark:text-white">Bringing the culture of sharing to everyone</h3>
-
-                            <p className="text-lg text-gray-800 dark:text-neutral-200">We know the power of sharing is real, and we want to create an opportunity for everyone to try Preline and explore how transformative open communication can be. Now you can have a team of one or two designers and unlimited spectators (think PMs, management, marketing, etc.) share work and explore the design process earlier.</p>
+                            <h3 className="text-2xl font-semibold dark:text-white font-serif">Country</h3>
+                            <p className="text-lg text-gray-800 dark:text-neutral-200">{destination.country}</p>
                         </div>
-
-                        <ul className="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 dark:text-neutral-200">
-                            <li className="ps-2">Preline allows us to collaborate in real time and is a really great way for leadership on the team to stay up-to-date with what everybody is working on," <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500" href="#">said</a> Stewart Scott-Curran, Intercom's Director of Brand Design.</li>
-                            <li className="ps-2">Preline opened a new way of sharing. It's a persistent way for everyone to see and absorb each other's work," said David Scott, Creative Director at <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500" href="#">Eventbrite</a>.</li>
-                        </ul>
-
-                        <p className="text-lg text-gray-800 dark:text-neutral-200">Small teams and individual designers need a space where they can watch the design process unfold, both for themselves and for the people they work with – no matter if it's a fellow designer, product manager, developer or client. Preline allows you to invite more people into the process, creating a central place for conversation around design. As those teams grow, transparency and collaboration becomes integrated in how they communicate and work together.</p>
-
-                        <div>
-                            <a className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                                Plan
-                            </a>
-                            <a className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                                Web development
-                            </a>
-                            <a className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                                Free
-                            </a>
-                            <a className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                                Team
-                            </a>
+                        <div className="space-y-3">
+                            <h3 className="text-2xl font-semibold dark:text-white font-serif">Name</h3>
+                            <p className="text-lg text-gray-800 dark:text-neutral-200">{destination.name}</p>
+                        </div>
+                        <div className="space-y-3">
+                            <h3 className="text-2xl font-semibold dark:text-white font-serif">Best season to visit</h3>
+                            <p className="text-lg text-gray-800 dark:text-neutral-200">{destination.seasons}</p>
+                        </div>
+                        <div className="space-y-3">
+                            <h3 className="text-2xl font-semibold dark:text-white font-serif">Description</h3>
+                            <p className="text-lg text-gray-800 dark:text-neutral-200">{destination.description}</p>
                         </div>
                     </div>
                 </div>
