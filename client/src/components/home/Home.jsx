@@ -1,4 +1,4 @@
-import homeView from '../../public/images/homeView.jpg'
+import homeView from '../../../public/images/homeView.jpg';
 export default function Home() {
     return (
 
@@ -10,7 +10,7 @@ export default function Home() {
             </div>
 
             <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-            <h1 class="mb-10 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Find the best destination for you</span></h1>
+            <h1 className="mb-10 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center"><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Find the best destination for you</span></h1>
                 <div className="sm:mb-8 sm:flex sm:justify-center">
                     <div className="flex items-center gap-2 p-2 border rounded-full ring-1 ring-gray-900/10 hover:ring-gray-900/20 max-w-md w-full">
                         <input
