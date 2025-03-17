@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router'
 import Home from './components/Home'
 import Header from './components/Header'
-import './assets/App.css'
+import '../public/App.css'
 import Footer from './components/Footer'
 import About from './components/About'
 import Catalog from './components/Catalog'
@@ -15,18 +15,16 @@ function App() {
   return (
     <>
       <Header />
-      <div id='main'>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path='/catalog/:destinationId/details' element={<Details />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/*" element={<Notfound />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path='/catalog/:destinationId/details' element={<Details />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/*" element={<Notfound />} />
+      </Routes>
       <Footer />
     </>
   )
