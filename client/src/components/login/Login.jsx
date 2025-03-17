@@ -1,19 +1,36 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useLogin } from "../../api/authApi";
+import { useActionState } from "react";
 
-export default function Login() {
+export default function Login({
+    onLogin,
+}) {
+
+    const navigate = useNavigate();
+    const { login } = useLogin();
+
+    const loginHandler = async (_, formData) => {
+        const values = Object.fromEntries(formData);
+        const authData = await login(values.email, values.password);
+
+        onLogin(authData);
+        navigate('/');
+    }
+
+    const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
+
     return (
         <section className="relative flex items-center h-screen bg-gray-100">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action="#" method="POST" className="space-y-6">
+                    <form action={loginAction} className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                                 Email address
                             </label>
                             <div className="mt-2">
                                 <input
-                                    id="email"
                                     name="email"
                                     type="email"
                                     required
@@ -36,7 +53,6 @@ export default function Login() {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    id="password"
                                     name="password"
                                     type="password"
                                     required

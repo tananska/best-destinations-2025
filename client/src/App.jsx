@@ -10,8 +10,16 @@ import Create from './components/create/Create'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Notfound from './components/not-found/Notfound'
+import { useState } from 'react'
 
 function App() {
+
+  const [user, setUser] = useState({});
+
+  const onLogin = (authData) => {
+    setUser(authData);
+  }
+
   return (
     <>
       <Header />
@@ -20,7 +28,7 @@ function App() {
         <Route path="/catalog" element={<Catalog />} />
         <Route path='/catalog/:destinationId/details' element={<Details />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onLogin={onLogin} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Notfound />} />
