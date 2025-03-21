@@ -1,19 +1,28 @@
 import { Link } from "react-router"
 
 export default function Register() {
+
+    const registerHandler = (formData) => {
+        const { email, password, rePassword } = Object.fromEntries(formData);
+
+        if (password !== rePassword) {
+            return window.alert('Password missmatch !');
+        }
+
+    }
+
     return (
         <section className="relative flex items-center h-screen bg-gray-100">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action="#" method="POST" className="space-y-6">
+                    <form action={registerHandler} className="space-y-6">
                         <div>
                             <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
                                 Username
                             </label>
                             <div className="mt-2">
                                 <input
-                                    id="username"
                                     name="username"
                                     type="text"
                                     required
@@ -31,7 +40,6 @@ export default function Register() {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    id="email"
                                     name="email"
                                     type="text"
                                     required
@@ -49,9 +57,8 @@ export default function Register() {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    id="password"
                                     name="password"
-                                    type="text"
+                                    type="password"
                                     required
                                     autoComplete="password"
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -67,9 +74,8 @@ export default function Register() {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    id="rePassword"
                                     name="rePassword"
-                                    type="text"
+                                    type="password"
                                     required
                                     autoComplete="rePassword"
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -88,7 +94,7 @@ export default function Register() {
                     </form>
 
                     <p className="mt-10 text-center text-sm/6 text-gray-500">
-                       Have an Account?{' '}
+                        Have an Account?{' '}
                         <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
                             Login Here
                         </Link>

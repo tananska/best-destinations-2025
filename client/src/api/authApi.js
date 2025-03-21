@@ -14,3 +14,16 @@ export const useLogin = () => {
         login,
     }
 }
+
+export const useRegister = () => {
+
+    const register = async (authData) => {
+        const accesToken = await request.post(`${baseUrl}/register`, { ...authData });
+
+        return accesToken;
+    }
+
+    return {
+        register,
+    }
+}
