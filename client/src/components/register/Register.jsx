@@ -11,8 +11,13 @@ export default function Register() {
 
     const registerHandler = async (_, formData) => {
 
-        const data = Object.fromEntries(formData);
-        const authData = await register(data);
+        const userData = Object.fromEntries(formData);
+
+        if(userData.password !== userData.rePassword){
+            return window.alert('Password missmatch');
+        }
+        
+        const authData = await register(userData.email, userData.password);
 
         userLoginHandler(authData);
         navigate('/');
