@@ -1,22 +1,27 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
+import { useActionState, useContext } from "react";
+import { useRegister } from "../../api/authApi";
 
 export default function Register() {
 
-    const registerHandler = (formData) => {
-        const { email, password, rePassword } = Object.fromEntries(formData);
+    const navigate = useNavigate();
+    const { register } = useRegister();
 
-        if (password !== rePassword) {
-            return window.alert('Password missmatch !');
-        }
+    const registerHandler = async (_, formData) => {
 
+        const data = Object.fromEntries(formData);
+        await register(data);
+
+        navigate('/');
     }
 
+    const [_, loginAction, isPending] = useActionState(registerHandler, { email: '', password: '' });
     return (
         <section className="relative flex items-center h-screen bg-gray-100">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action={registerHandler} className="space-y-6">
+                    <form action={loginAction} className="space-y-6">
                         <div>
                             <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
                                 Username
@@ -86,6 +91,7 @@ export default function Register() {
                         <div>
                             <button
                                 type="submit"
+                                disabled={isPending}
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign up

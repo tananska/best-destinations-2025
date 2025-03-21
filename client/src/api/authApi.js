@@ -18,9 +18,9 @@ export const useLogin = () => {
 export const useRegister = () => {
 
     const register = async (authData) => {
-        const accesToken = await request.post(`${baseUrl}/register`, { ...authData });
+        const userData = await request.post(`${baseUrl}/register`, { ...authData });
 
-        return accesToken;
+        return userData;
     }
 
     return {
