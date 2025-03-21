@@ -11,10 +11,11 @@ import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Notfound from './components/not-found/Notfound'
 import { useState } from 'react'
+import usePersistedState from './hooks/usePersistedState'
 
 function App() {
 
-  const [user, setUser] = useState({});
+  const [authData, setAuthData] = usePersistedState({});
 
   const onLogin = (authData) => {
     setUser(authData);
