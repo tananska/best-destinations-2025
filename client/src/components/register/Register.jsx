@@ -1,21 +1,24 @@
 import { Link, useNavigate } from "react-router"
 import { useActionState, useContext } from "react";
 import { useRegister } from "../../api/authApi";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Register() {
 
     const navigate = useNavigate();
     const { register } = useRegister();
+    const { userLoginHandler } = useContext(UserContext);
 
     const registerHandler = async (_, formData) => {
 
         const data = Object.fromEntries(formData);
-        await register(data);
+        const authData = await register(data);
 
+        userLoginHandler(authData);
         navigate('/');
     }
 
-    const [_, loginAction, isPending] = useActionState(registerHandler, { email: '', password: '' });
+    const [_, loginAction, isPending] = useActionState(registerHandler, { email: '', password: '', username: '' });
     return (
         <section className="relative flex items-center h-screen bg-gray-100">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">

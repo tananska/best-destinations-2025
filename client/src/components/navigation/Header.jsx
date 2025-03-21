@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router'
+import { UserContext } from '../../contexts/UserContext'
 
 const navigation = [
     { name: 'Home', href: '/' },
@@ -13,7 +14,9 @@ const navigation = [
 ]
 
 export default function Header() {
+
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const { username } = useContext(UserContext)
 
     return (
         <header className="absolute inset-x-0 top-0 z-50">
@@ -43,7 +46,18 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    {username && (
+                        <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
+                            <span className="font-semibold text-blue-600 dark:text-blue-400">
+                                {username}
+                            </span>
+                            <span className="mx-2 text-gray-400">|</span>
+                            Your journey starts here
+                        </p>
+                    )}
                 </div>
+
+
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-50" />
