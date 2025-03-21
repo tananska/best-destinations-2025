@@ -11,12 +11,13 @@ const navigation = [
     { name: 'Create', href: '/create' },
     { name: 'Register', href: '/register' },
     { name: 'Login', href: '/login' },
+    { name: 'Logout', href: '/logout' },
 ]
 
 export default function Header() {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const { username } = useContext(UserContext)
+    const { email } = useContext(UserContext)
 
     return (
         <header className="absolute inset-x-0 top-0 z-50">
@@ -46,10 +47,10 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {username && (
+                    {email && (
                         <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
                             <span className="font-semibold text-blue-600 dark:text-blue-400">
-                                {username}
+                                {email}
                             </span>
                             <span className="mx-2 text-gray-400">|</span>
                             Your journey starts here

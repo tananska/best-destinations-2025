@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router";
-import { useLogin } from "../../api/authApi";
 import { useActionState, useContext } from "react";
+
+import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function Login() {
@@ -17,7 +18,7 @@ export default function Login() {
         userLoginHandler(authData);
         navigate('/');
     }
-    
+
     const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
     return (

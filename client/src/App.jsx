@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router'
+import { useState } from 'react'
 
 // import usePersistedState from './hooks/usePersistedState'
-import { useState } from 'react'
+import { UserContext } from './contexts/UserContext'
 
 import Home from './components/home/Home'
 import Header from './components/navigation/Header'
@@ -10,12 +11,12 @@ import About from './components/about/About'
 import Catalog from './components/catalog/Catalog'
 import Details from './components/details/Details'
 import Create from './components/create/Create'
-import Login from './components/login/Login'
 import Register from './components/register/Register'
+import Login from './components/login/Login'
+import Logout from './components/logout/Logout'
 import Notfound from './components/not-found/Notfound'
 
 import './App.css'
-import { UserContext } from './contexts/UserContext'
 
 function App() {
 
@@ -25,8 +26,12 @@ function App() {
     setAuthData(authData);
   }
 
+  const userLogoutHandler = () => {
+    setAuthData({});
+  }
+
   return (
-    <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+    <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,6 +40,7 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>
