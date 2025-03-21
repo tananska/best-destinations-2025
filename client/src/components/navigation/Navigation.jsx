@@ -4,16 +4,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
 
-const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Catalog', href: '/catalog' },
-    { name: 'About', href: '/about' },
-    { name: 'Create', href: '/create' },
-    { name: 'Register', href: '/register' },
-    { name: 'Login', href: '/login' },
-    { name: 'Logout', href: '/logout' },
-]
-
 export default function Navigation() {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -40,11 +30,25 @@ export default function Navigation() {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item) => (
-                        <Link key={item.name} to={item.href} className="text-sm/6 font-semibold text-gray-900">
-                            {item.name}
-                        </Link>
-                    ))}
+                    <Link to={'/'} className='text-sm/6 font-semibold text-gray-900'>Home</Link>
+                    <Link to={'/catalog'} className='text-sm/6 font-semibold text-gray-900'>Catalog</Link>
+                    <Link to={'/about'} className='text-sm/6 font-semibold text-gray-900'>About</Link>
+                    {email
+                        ? (
+                            <>
+                                <Link to={'/create'} className='text-sm/6 font-semibold text-gray-900'>Create</Link>
+                                <Link to={'/logout'} className='text-sm/6 font-semibold text-gray-900'>Logout</Link>
+                            </>
+                        )
+                        : (
+                            <>
+                                <Link to={'/register'} className='text-sm/6 font-semibold text-gray-900'>Register</Link>
+                                <Link to={'/login'} className='text-sm/6 font-semibold text-gray-900'>Login</Link>
+                            </>
+                        )
+                    }
+
+
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     {email && (
@@ -57,8 +61,6 @@ export default function Navigation() {
                         </p>
                     )}
                 </div>
-
-
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-50" />
@@ -76,15 +78,13 @@ export default function Navigation() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                {navigation.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
+                                <Link to={'/'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home</Link>
+                                <Link to={'/catalog'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</Link>
+                                <Link to={'/about'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">About</Link>
+                                <Link to={'/register'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Register</Link>
+                                <Link to={'/login'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</Link>
+                                <Link to={'/create'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Create</Link>
+                                <Link to={'/logout'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Logout</Link>
                             </div>
                         </div>
                     </div>
