@@ -4,11 +4,7 @@ const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
 
-    const login = async (email, password) => {
-        const userData = await request.post(`${baseUrl}/login`, { email, password });
-
-        return userData;
-    }
+    const login = (email, password) => request.post(`${baseUrl}/login`, { email, password });
 
     return {
         login,
@@ -17,11 +13,7 @@ export const useLogin = () => {
 
 export const useRegister = () => {
 
-    const register = async (authData) => {
-        const userData = await request.post(`${baseUrl}/register`, { ...authData });
-
-        return userData;
-    }
+    const register = (email, password) => request.post(`${baseUrl}/register`, { email, password });
 
     return {
         register,
