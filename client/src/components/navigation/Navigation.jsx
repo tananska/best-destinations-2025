@@ -14,7 +14,7 @@ const navigation = [
     { name: 'Logout', href: '/logout' },
 ]
 
-export default function Header() {
+export default function Navigation() {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const { email } = useContext(UserContext)

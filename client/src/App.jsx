@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { UserContext } from './contexts/UserContext'
 
 import Home from './components/home/Home'
-import Header from './components/navigation/Header'
+import Navigation from './components/navigation/Navigation'
 import Footer from './components/footer/Footer'
 import About from './components/about/About'
 import Catalog from './components/catalog/Catalog'
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
-      <Header />
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
