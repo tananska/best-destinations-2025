@@ -31,7 +31,7 @@ export default function Navigation() {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     <Link to={'/'} className='text-sm/6 font-semibold text-gray-900'>Home</Link>
-                    <Link to={'/catalog'} className='text-sm/6 font-semibold text-gray-900'>Catalog</Link>
+                    <Link to={'/destinations'} className='text-sm/6 font-semibold text-gray-900'>Destinations</Link>
                     <Link to={'/about'} className='text-sm/6 font-semibold text-gray-900'>About</Link>
                     {email
                         ? (

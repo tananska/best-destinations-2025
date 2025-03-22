@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import { useEffect, useState } from "react"
 
-export default function Catalog() {
+export default function Destinations() {
     const [destinations, setDestinations] = useState([]);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function Catalog() {
                             <div className="mt-4 flex justify-between">
                                 <div>
                                     <h3 className="text-sm text-gray-700 ">
-                                        <Link to={`/catalog/${destination._id}/details`}>
+                                        <Link to={`/destination/${destination._id}/details`}>
                                             <span aria-hidden="true" className="absolute inset-0" />
                                             {destination.name}
                                         </Link>

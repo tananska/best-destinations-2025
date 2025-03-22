@@ -5,9 +5,10 @@ import { useState } from 'react'
 import { UserContext } from './contexts/UserContext'
 
 import Home from './components/home/Home'
+import Navigation from './components/navigation/Navigation'
 import Footer from './components/footer/Footer'
 import About from './components/about/About'
-import Catalog from './components/catalog/Catalog'
+import Destinations from './components/destinations/Destinations'
 import Details from './components/details/Details'
 import Create from './components/create/Create'
 import Register from './components/register/Register'
@@ -31,10 +32,12 @@ function App() {
 
   return (
     <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
+      <Navigation />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path='/catalog/:destinationId/details' element={<Details />} />
+        <Route path="/destinations" element={<Destinations />} />
+        <Route path='/destination/:destinationId/details' element={<Details />} />
         <Route path="/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
