@@ -52,13 +52,16 @@ export default function Navigation() {
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     {email && (
-                        <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
-                            <span className="font-semibold text-blue-600 dark:text-blue-400">
-                                {email}
-                            </span>
-                            <span className="mx-2 text-gray-400">|</span>
-                            Your journey starts here
-                        </p>
+                        <div className="flex items-center space-x-3 overflow-hidden">
+                            <img className="inline-block w-12 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                            <p className="text-sm md:text-base font-medium text-white">
+                                <span className="font-semibold text-white">
+                                    {email}
+                                </span>
+                                <span className="mx-2 text-white">|</span>
+                                Your journey starts here
+                            </p>
+                        </div>
                     )}
                 </div>
             </nav>

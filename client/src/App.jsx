@@ -33,7 +33,6 @@ function App() {
   return (
     <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
       <Navigation />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
