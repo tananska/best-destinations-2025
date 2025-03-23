@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useGetOneDestination } from "../../api/destinationsApi"
 
 export default function Details() {
@@ -78,10 +79,10 @@ export default function Details() {
                 </div>
             </div>
             <div className="flex justify-center gap-4 m-10">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <Link to={`/destination/${destination._id}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                     Edit
-                </button>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                </Link>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                     Delete
                 </button>
             </div>
