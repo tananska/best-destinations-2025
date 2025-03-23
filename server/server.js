@@ -1373,7 +1373,7 @@
                 "name": "Tower Bridge",
                 "imageUrl": "https://i0.wp.com/www.awalkandalark.com/wp-content/uploads/2020/03/Tower-Bridge-at-night.jpg?fit=1100%2C825&ssl=1",
                 "seasons": "Spring",
-                "description": "Tower Bridge is a Grade I listed combined bascule, suspension, and, until 1960, cantilever bridge[1] in London, built between 1886 and 1894, designed by Horace Jones and engineered by John Wolfe Barry with the help of Henry Marc Brunel.[2] It crosses the River Thames close to the Tower of London and is one of five London bridges owned and maintained by the City Bridge Foundation, a charitable trust founded in 1282.",
+                "description": "Tower Bridge is a Grade I listed combined bascule, suspension, and, until 1960, cantilever bridge in London, built between 1886 and 1894, designed by Horace Jones and engineered by John Wolfe Barry with the help of Henry Marc Brunel. It crosses the River Thames close to the Tower of London and is one of five London bridges owned and maintained by the City Bridge Foundation, a charitable trust founded in 1282.",
                 "_id": "6de1ba6c-be01-41f4-afe6-2e37941d0040"
             },
             "1479ad1d-991a-48ea-b0d2-1b021551e408": {
