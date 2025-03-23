@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router";
+import { useCreateDestination } from "../../api/destinationsApi";
 
 export default function Create() {
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
+  const { create } = useCreateDestination();
+
   const formSubmit = async (formData) => {
+
     const destinationData = Object.fromEntries(formData);
-    fetch('http://localhost:3030/jsonstore/destinations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: destinationData,
-    })
-    navigate('/catalog');
+    await create(destinationData);
+    navigate('/destinations');
+
   }
 
   return (
