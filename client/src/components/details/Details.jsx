@@ -1,15 +1,8 @@
-import { useParams } from "react-router"
-import { useState,useEffect } from "react";
+import { useGetOneDestination } from "../../api/destinationsApi"
 
 export default function Details() {
-    const { destinationId } = useParams();
-    const [destination, setDestination] = useState({});
 
-    useEffect(() => {
-        fetch(`http://localhost:3030/jsonstore/destinations/${destinationId}`)
-        .then(response => response.json())
-        .then(result => setDestination(result))
-    }, []);
+    const { destination } = useGetOneDestination();
     
     return (
         <>
