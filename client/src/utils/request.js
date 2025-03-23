@@ -1,4 +1,4 @@
-export const request = async (method, url, data, options = {}) => {
+export default async function request (method, url, data, options = {}){
 
     if (method !== 'GET') {
         options.method = method;
