@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import request from "../utils/request";
-import { UserContext } from "../contexts/UserContext";
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/destinations';
 
@@ -9,7 +9,7 @@ export const useGetAllDestinations = () => {
     const [destinations, setDestinations] = useState([]);
 
     useEffect(() => {
-        request.get(baseUrl)
+        request('GET',baseUrl)
             .then(setDestinations)
     }, []);
 
@@ -23,7 +23,7 @@ export const useGetOneDestination = () => {
     const { destinationId } = useParams();
 
     useEffect(() => {
-        request.get(`${baseUrl}/${destinationId}`)
+        request('GET',`${baseUrl}/${destinationId}`)
             .then(setDestination)
 
     }, [])
@@ -33,13 +33,7 @@ export const useGetOneDestination = () => {
 }
 
 export const useCreateDestination = () => {
-    const { accessToken } = useContext(UserContext);
-
-    const options = {
-        headers: {
-            'X-Authorization': accessToken,
-        }
-    }
+    const { options } = useAuth();
 
     const create = (destinationData) => request.post(baseUrl, destinationData, options);
 

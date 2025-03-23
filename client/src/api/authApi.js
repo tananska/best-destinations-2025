@@ -1,12 +1,13 @@
 import { useContext, useEffect } from "react";
 import request from "../utils/request";
 import { UserContext } from "../contexts/UserContext";
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
 
-    const login = (email, password) => request.post(`${baseUrl}/login`, { email, password });
+    const login = (email, password) => request('POST', `${baseUrl}/login`, { email, password });
 
     return {
         login,
@@ -15,7 +16,7 @@ export const useLogin = () => {
 
 export const useRegister = () => {
 
-    const register = (email, password) => request.post(`${baseUrl}/register`, { email, password });
+    const register = (email, password) => request('POST', `${baseUrl}/register`, { email, password });
 
     return {
         register,
@@ -24,18 +25,14 @@ export const useRegister = () => {
 
 export const useLogout = () => {
 
-    const { accessToken, userLogoutHandler } = useContext(UserContext)
+    const { authorizationOptions, accessToken, userLogoutHandler } = useAuth();
 
     useEffect(() => {
         if (!accessToken) {
             return;
         }
-        const options = {
-            headers: {
-                'X-Authorization': accessToken,
-            }
-        }
-        request.get(`${baseUrl}/logout`, null, options)
+
+        request('GET', `${baseUrl}/logout`, null, authorizationOptions)
             .then(userLogoutHandler);
     }, [accessToken, userLogoutHandler])
 

@@ -1,4 +1,4 @@
-const request = async (method, url, data, options = {}) => {
+export const request = async (method, url, data, options = {}) => {
 
     if (method !== 'GET') {
         options.method = method;
@@ -24,10 +24,3 @@ const request = async (method, url, data, options = {}) => {
 
     return result;
 };
-
-export default {
-    get: request.bind(null, 'GET'),
-    post: request.bind(null, 'POST'),
-    put: request.bind(null, 'PUT'),
-    delete: request.bind(null, 'DELETE'),
-}
