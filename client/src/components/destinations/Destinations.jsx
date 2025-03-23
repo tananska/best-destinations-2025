@@ -1,14 +1,9 @@
 import { Link } from "react-router"
-import { useEffect, useState } from "react"
+import { useGetAllDestinations } from "../../api/destinationsApi"
 
 export default function Destinations() {
-    const [destinations, setDestinations] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/destinations')
-            .then(response => response.json())
-            .then(result => setDestinations(Object.values(result)));
-    }, []);
+    const { destinations } = useGetAllDestinations();
 
     return (
         <div className="bg-gray-100">
