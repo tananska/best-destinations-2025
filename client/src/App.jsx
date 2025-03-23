@@ -17,6 +17,7 @@ import Logout from './components/logout/Logout'
 import Notfound from './components/not-found/Notfound'
 
 import './App.css'
+import Edit from './components/edit/Edit'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path='/destination/:destinationId/details' element={<Details />} />
+        <Route path='/destination/:destinationId/edit' element={<Edit />} />
         <Route path="/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

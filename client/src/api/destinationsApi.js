@@ -9,7 +9,7 @@ export const useGetAllDestinations = () => {
     const [destinations, setDestinations] = useState([]);
 
     useEffect(() => {
-        request('GET',baseUrl)
+        request('GET', baseUrl)
             .then(setDestinations)
     }, []);
 
@@ -23,7 +23,7 @@ export const useGetOneDestination = () => {
     const { destinationId } = useParams();
 
     useEffect(() => {
-        request('GET',`${baseUrl}/${destinationId}`)
+        request('GET', `${baseUrl}/${destinationId}`)
             .then(setDestination)
 
     }, [])
@@ -33,12 +33,30 @@ export const useGetOneDestination = () => {
 }
 
 export const useCreateDestination = () => {
-    const { options } = useAuth();
+    const { authorizationOptions } = useAuth();
 
-    const create = (destinationData) => request.post(baseUrl, destinationData, options);
+    const create = (destinationData) => request('POST', baseUrl, destinationData, authorizationOptions);
 
     return {
         create
+    }
+}
+
+export const useEditDestination = () => {
+
+    const edit = (destinationId, destinationData) => request('PUT', `${baseUrl}/${destinationId},`, { ...destinationData, _id: destinationId });
+
+    return {
+        edit
+    }
+}
+
+export const useDeleteDestination = () => {
+
+    const deleteDestination = (destinationId) => request('DELETE', `${baseUrl}/${destinationId}`);
+
+    return {
+        deleteDestination,
     }
 }
 
