@@ -3,7 +3,7 @@ import { useGetOneDestination } from "../../api/destinationsApi"
 export default function Details() {
 
     const { destination } = useGetOneDestination();
-    
+
     return (
         <>
             <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
@@ -76,6 +76,14 @@ export default function Details() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-center gap-4 m-10">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Edit
+                </button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Delete
+                </button>
             </div>
         </>
     )
