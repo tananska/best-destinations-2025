@@ -13,8 +13,16 @@ export default function usePersistedState(initialState) {
         return persistedStateData;
     });
 
+    const setPersistedData = (data) => {
+
+        const persistedData = JSON.stringify(data);
+        localStorage.setItem('auth',persistedData);
+
+        setState(data)
+    }
+
     return [
         state,
-        setState,
+        setPersistedData,
     ]
 }
