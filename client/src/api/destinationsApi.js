@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import request from "../utils/request";
 import useAuth from "../hooks/useAuth";
+import usePersistedState from "../hooks/usePersistedState";
 
 const baseUrl = 'http://localhost:3030/data/destinations';
 
@@ -43,7 +44,6 @@ export const useCreateDestination = () => {
 }
 
 export const useEditDestination = () => {
-
     const { authorizationOptions } = useAuth()
     const edit = (destinationId, destinationData) => request('PUT', `${baseUrl}/${destinationId}`, { ...destinationData, _id: destinationId }, authorizationOptions);
 
@@ -53,12 +53,30 @@ export const useEditDestination = () => {
 }
 
 export const useDeleteDestination = () => {
-
     const { authorizationOptions } = useAuth();
     const deleteDestination = (destinationId) => request('DELETE', `${baseUrl}/${destinationId}`, null, authorizationOptions);
 
     return {
         deleteDestination,
+    }
+}
+
+export const useLatestDestinations = () => {
+    const [latestDestinations, setLatestDestinations] = usePersistedState([]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: 3,
+            select: '_id,imageUrl,country,name',
+        });
+
+        request('GET', `${baseUrl}?${searchParams.toString()}`)
+            .then(setLatestDestinations)
+    }, []);
+
+    return {
+        latestDestinations
     }
 }
 
