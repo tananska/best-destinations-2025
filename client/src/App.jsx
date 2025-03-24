@@ -20,7 +20,7 @@ import './App.css'
 
 function App() {
 
-  const [authData, setAuthData] = usePersistedState({});
+  const [authData, setAuthData] = usePersistedState('auth', {});
 
   const userLoginHandler = (authData) => {
     setAuthData(authData);

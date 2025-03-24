@@ -1,22 +1,23 @@
 import { useState } from "react";
 
-export default function usePersistedState(initialState) {
+export default function usePersistedState(stateKey,initialState) {
 
     const [state, setState] = useState(() => {
-        const persistedState = localStorage.getItem('auth');
+        const persistedState = localStorage.getItem(stateKey);
 
         if (!persistedState) {
-            return initialState;
+            return typeof initialState === 'function' ? initialState() : initialState;
         }
 
         const persistedStateData = JSON.parse(persistedState);
         return persistedStateData;
     });
 
-    const setPersistedData = (data) => {
+    const setPersistedData = (input) => {
 
+        const data = typeof input === 'function' ? input(state) : input;
         const persistedData = JSON.stringify(data);
-        localStorage.setItem('auth',persistedData);
+        localStorage.setItem(stateKey,persistedData);
 
         setState(data)
     }
