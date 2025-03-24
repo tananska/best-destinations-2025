@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useDeleteDestination, useGetOneDestination } from "../../api/destinationsApi"
+import useAuth from "../../hooks/useAuth";
 
 export default function Details() {
 
@@ -7,6 +8,9 @@ export default function Details() {
     const { destinationId } = useParams();
     const { destination } = useGetOneDestination();
     const { deleteDestination } = useDeleteDestination();
+    const { _id: userId } = useAuth();
+
+    const isCreator = userId === destination._ownerId;
 
     const deleteClickHandler = async () => {
         const hasConfirm = confirm('Are you sure you want to delete this destination ?');
@@ -94,14 +98,16 @@ export default function Details() {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center gap-4 m-10">
-                <Link to={`/destinations/${destination._id}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                    Edit
-                </Link>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={deleteClickHandler}>
-                    Delete
-                </button>
-            </div>
+            {isCreator && (
+                <div className="flex justify-center gap-4 m-10">
+                    <Link to={`/destinations/${destination._id}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        Edit
+                    </Link>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={deleteClickHandler}>
+                        Delete
+                    </button>
+                </div>
+            )}
         </>
     )
 }
