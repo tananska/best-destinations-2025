@@ -1365,6 +1365,7 @@
                 "imageUrl": "https://149990825.v2.pressablecdn.com/wp-content/uploads/2023/09/Paris1.jpg",
                 "seasons": "Summer",
                 "description": "Locally nicknamed \"La dame de fer\" (French for \"Iron Lady\"), it was constructed as the centerpiece of the 1889 World's Fair, and to crown the centennial anniversary of the French Revolution. Although initially criticised by some of France's leading artists and intellectuals for its design, it has since become a global cultural icon of France and one of the most recognisable structures in the world. The tower received 5,889,000 visitors in 2022. The Eiffel Tower is the most visited monument with an entrance fee in the world, 6.91 million people ascended it in 2015. It was designated a monument historique in 1964, and was named part of a UNESCO World Heritage Site (\"Paris, Banks of the Seine\") in 1991.",
+                "_createdOn": 1742740468584,
                 "_id": "69c4bbed-112c-463a-9da9-a0c884f97603"
             },
             "6de1ba6c-be01-41f4-afe6-2e37941d0040": {
@@ -1374,6 +1375,7 @@
                 "imageUrl": "https://i0.wp.com/www.awalkandalark.com/wp-content/uploads/2020/03/Tower-Bridge-at-night.jpg?fit=1100%2C825&ssl=1",
                 "seasons": "Spring",
                 "description": "Tower Bridge is a Grade I listed combined bascule, suspension, and, until 1960, cantilever bridge in London, built between 1886 and 1894, designed by Horace Jones and engineered by John Wolfe Barry with the help of Henry Marc Brunel. It crosses the River Thames close to the Tower of London and is one of five London bridges owned and maintained by the City Bridge Foundation, a charitable trust founded in 1282.",
+                "_createdOn": 1742740468585,
                 "_id": "6de1ba6c-be01-41f4-afe6-2e37941d0040"
             },
             "1479ad1d-991a-48ea-b0d2-1b021551e408": {
@@ -1383,6 +1385,7 @@
                 "imageUrl": "https://www.citalia.com/-/media/bynder/citalia-destinations/italy/cities/rome/rome-2023-colosseum-shutterstock-2120859782-hybris.jpg?rev=8aa72fc2fea643baa7b321f3553089de",
                 "seasons": "Winter",
                 "description": "The Colosseum is built of travertine limestone, tuff (volcanic rock), and brick-faced concrete. It could hold an estimated 50,000 to 80,000 spectators at various points in its history, having an average audience of some 65,000 it was used for gladiatorial contests and public spectacles including animal hunts, executions, re-enactments of famous battles, dramas based on Roman mythology, and briefly mock sea battles. The building ceased to be used for entertainment in the early medieval era. It was later reused for such purposes as housing, workshops, quarters for a religious order, a fortress, a quarry, and a Christian shrine.",
+                "_createdOn": 1742740468586,
                 "_id": "1479ad1d-991a-48ea-b0d2-1b021551e408"
             },
             "a456a100-613c-4c78-983a-c5d706a2472d": {
@@ -1392,6 +1395,7 @@
                 "imageUrl": "https://assets.dm.rccl.com/is/image/RoyalCaribbeanCruises/royal/data/ports/benoa-bali-indonesia/overview/benoa-bali-indonesia-exotic-beach-white-sands.jpg?$1440x600$",
                 "seasons": "Summer",
                 "description": "Bali is part of the Coral Triangle, the area with the highest biodiversity of marine species, in Coral Triangle, especially fish and turtles. In this area alone, over 500 reef-building coral species can be found. For comparison, this is about seven times as many as in the entire Caribbean. Bali is the home of the Subak irrigation system, a UNESCO World Heritage Site. It is also home to a unified confederation of kingdoms composed of 10 traditional royal Balinese houses, each house ruling a specific geographic area. The confederation is the successor of the Bali Kingdom. The royal houses, which originated before Dutch colonisation, are not recognised by the government of Indonesia.",
+                "_createdOn": 1742740468587,
                 "_id": "a456a100-613c-4c78-983a-c5d706a2472d"
             },
             "12e21a5c-f6a7-4c7f-bbd9-bfd5fb18d1e9": {
@@ -1401,6 +1405,7 @@
                 "imageUrl": "https://image-tc.galaxy.tf/wijpeg-d944dc29e9201fbxivvvbti36/istock-496578476_standard.jpg?crop=50%2C0%2C800%2C600",
                 "seasons": "Winter",
                 "description": "The Grand Palace is a complex of buildings at the heart of Bangkok, Thailand. The palace has been the official residence of the Kings of Siam since 1782. The king, his court, and his royal government were based on the grounds of the palace until 1925. Grand Palace is still used for official events. Several royal ceremonies and state functions are held within the walls of the palace every year. The palace is one of the most popular tourist attractions in Thailand, with over eight million people visiting each year.",
+                "_createdOn": 1742740468588,
                 "_id": "12e21a5c-f6a7-4c7f-bbd9-bfd5fb18d1e9"
             },
             "5401c0c7-2ab0-407c-8c36-c5a0b1f58d5b": {
@@ -1410,6 +1415,7 @@
                 "imageUrl": "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/92/f2/6e.jpg",
                 "seasons": "Winter",
                 "description": "The Burj Al Arab 'Arab Tower') is a luxury hotel in Dubai, United Arab Emirates. Developed and managed by Jumeirah, it is one of the tallest hotels in the world, although 39% of its total height is made up of non-occupiable space. Burj Al Arab stands on an artificial island that is 280 m (920 ft) from Jumeirah Beach and is connected to the mainland by a private curving bridge. The shape of the structure is designed to resemble the sail of a dhow.It has a helipad near the roof, at a height of 210 m (689 ft) above ground.",
+                "_createdOn": 1742740468589,
                 "_id": "5401c0c7-2ab0-407c-8c36-c5a0b1f58d5b"
             }
         }
