@@ -1,9 +1,25 @@
-import { Link } from "react-router";
-import { useGetOneDestination } from "../../api/destinationsApi"
+import { Link, useNavigate, useParams } from "react-router";
+import { useDeleteDestination, useGetOneDestination } from "../../api/destinationsApi"
 
 export default function Details() {
 
+    const navigate = useNavigate();
+    const { destinationId } = useParams();
     const { destination } = useGetOneDestination();
+    const { deleteDestination } = useDeleteDestination();
+
+    const deleteClickHandler = async () => {
+        const hasConfirm = confirm('Are you sure you want to delete this destination ?');
+        if (!hasConfirm) {
+            return;
+        }
+        try {
+            await deleteDestination(destinationId);
+            navigate('/destinations');
+        } catch (err) {
+            alert(err.message);
+        }
+    }
 
     return (
         <>
@@ -79,10 +95,10 @@ export default function Details() {
                 </div>
             </div>
             <div className="flex justify-center gap-4 m-10">
-                <Link to={`/destination/${destination._id}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <Link to={`/destinations/${destination._id}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                     Edit
                 </Link>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={deleteClickHandler}>
                     Delete
                 </button>
             </div>
