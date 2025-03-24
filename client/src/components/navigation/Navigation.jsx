@@ -1,13 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
-import usePersistedState from '../../hooks/usePersistedState'
 
 export default function Navigation() {
 
-    const [mobileMenuOpen, setMobileMenuOpen] = usePersistedState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const { email } = useContext(UserContext)
 
     return (
