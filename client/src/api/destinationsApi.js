@@ -44,7 +44,8 @@ export const useCreateDestination = () => {
 
 export const useEditDestination = () => {
 
-    const edit = (destinationId, destinationData) => request('PUT', `${baseUrl}/${destinationId},`, { ...destinationData, _id: destinationId });
+    const { authorizationOptions } = useAuth()
+    const edit = (destinationId, destinationData) => request('PUT', `${baseUrl}/${destinationId}`, { ...destinationData, _id: destinationId }, authorizationOptions);
 
     return {
         edit
@@ -53,7 +54,8 @@ export const useEditDestination = () => {
 
 export const useDeleteDestination = () => {
 
-    const deleteDestination = (destinationId) => request('DELETE', `${baseUrl}/${destinationId}`);
+    const { authorizationOptions } = useAuth();
+    const deleteDestination = (destinationId) => request('DELETE', `${baseUrl}/${destinationId}`, null, authorizationOptions);
 
     return {
         deleteDestination,
