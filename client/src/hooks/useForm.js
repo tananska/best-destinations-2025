@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import usePersistedState from "./usePersistedState";
 
 export const useForm = (initialValues,submitCallback) => {
 
-    const [values,setValues] = useState(initialValues);
+    const [values,setValues] = usePersistedState(initialValues);
 
     const changeHandler = (e) => {
         setValues(state => ({

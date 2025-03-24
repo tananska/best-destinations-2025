@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router"
 import request from "../utils/request";
 import useAuth from "../hooks/useAuth";
@@ -7,7 +7,7 @@ import usePersistedState from "../hooks/usePersistedState";
 const baseUrl = 'http://localhost:3030/data/destinations';
 
 export const useGetAllDestinations = () => {
-    const [destinations, setDestinations] = useState([]);
+    const [destinations, setDestinations] = usePersistedState([]);
 
     useEffect(() => {
         request('GET', baseUrl)
@@ -20,7 +20,7 @@ export const useGetAllDestinations = () => {
 }
 
 export const useGetOneDestination = () => {
-    const [destination, setDestination] = useState({});
+    const [destination, setDestination] = usePersistedState({});
     const { destinationId } = useParams();
 
     useEffect(() => {
