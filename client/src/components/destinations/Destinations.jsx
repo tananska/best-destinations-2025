@@ -21,7 +21,7 @@ export default function Destinations() {
                             <div className="mt-4 flex justify-between">
                                 <div>
                                     <h3 className="text-sm text-gray-700 ">
-                                        <Link to={`/destination/${destination._id}/details`}>
+                                        <Link to={`/destinations/${destination._id}/details`}>
                                             <span aria-hidden="true" className="absolute inset-0" />
                                             {destination.name}
                                         </Link>
