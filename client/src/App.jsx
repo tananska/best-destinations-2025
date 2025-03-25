@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router'
 
-import usePersistedState from './hooks/usePersistedState'
-import { UserContext } from './contexts/UserContext'
+import UserProvider from './providers/UserProvider'
 
 import Home from './components/home/Home'
 import Navigation from './components/navigation/Navigation'
@@ -20,18 +19,8 @@ import './App.css'
 
 function App() {
 
-  const [authData, setAuthData] = usePersistedState('auth', {});
-
-  const userLoginHandler = (authData) => {
-    setAuthData(authData);
-  }
-
-  const userLogoutHandler = () => {
-    setAuthData({});
-  }
-
   return (
-    <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
+    <UserProvider>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -46,7 +35,7 @@ function App() {
         <Route path="/*" element={<Notfound />} />
       </Routes>
       <Footer />
-    </UserContext.Provider>
+    </UserProvider>
   )
 }
 

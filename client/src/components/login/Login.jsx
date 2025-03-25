@@ -8,7 +8,7 @@ export default function Login() {
 
     const navigate = useNavigate();
     const { login } = useLogin();
-    const { userLoginHandler, email } = useContext(UserContext);
+    const { userLoginHandler} = useContext(UserContext);
 
     const loginHandler = async (_, formData) => {
 
