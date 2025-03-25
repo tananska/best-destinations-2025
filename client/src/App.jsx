@@ -15,6 +15,7 @@ import Login from './components/login/Login'
 import Logout from './components/logout/Logout'
 import Notfound from './components/not-found/Notfound'
 import AuthGuard from './components/guards/AuthGuard'
+import GuestGuard from './components/guards/GuestGuard'
 
 import './App.css'
 
@@ -32,8 +33,10 @@ function App() {
           <Route path="/destinations/create" element={<Create />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route element={<GuestGuard />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>
