@@ -1418,7 +1418,23 @@
                 "_createdOn": 1742740468589,
                 "_id": "5401c0c7-2ab0-407c-8c36-c5a0b1f58d5b"
             }
-        }
+        },
+        comments: [
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
+                "comment": "It is really nice",
+                "_createdOn": 1742930537602,
+                "_id": "6293ee9b-e41a-4527-b527-b18c2f225cad"
+            },
+            {
+                "_ownerId": "fb6d9efc-56c6-4c54-9fb7-19b38cf40378",
+                "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
+                "comment": "So amazing !",
+                "_createdOn": 1742930618748,
+                "_id": "7fefd201-f3fb-4f13-b1ca-1c68afd173eb"
+            }
+        ]
     };
     var rules$1 = {
         users: {
