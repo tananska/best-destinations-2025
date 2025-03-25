@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useDeleteDestination, useGetOneDestination } from "../../api/destinationsApi"
 import useAuth from "../../hooks/useAuth";
+import Comments from "../comments/Comments";
 
 export default function Details() {
 
@@ -8,7 +9,7 @@ export default function Details() {
     const { destinationId } = useParams();
     const { destination } = useGetOneDestination();
     const { deleteDestination } = useDeleteDestination();
-    const { _id: userId } = useAuth();
+    const { _id: userId, isAuthenticated } = useAuth();
 
     const isCreator = userId === destination._ownerId;
 
@@ -83,18 +84,6 @@ export default function Details() {
                                 </span>
                             </button>
                         </div>
-
-                        <div className="block h-3 border-e border-gray-300 mx-3 dark:border-neutral-600"></div>
-
-                        <div className="hs-tooltip inline-block">
-                            <button type="button" className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" /></svg>
-                                16
-                                <span className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-2xs dark:bg-black" role="tooltip">
-                                    Comment
-                                </span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -108,6 +97,7 @@ export default function Details() {
                     </button>
                 </div>
             )}
+            {isAuthenticated && <Comments />}
         </>
     )
 }
