@@ -14,6 +14,7 @@ import Register from './components/register/Register'
 import Login from './components/login/Login'
 import Logout from './components/logout/Logout'
 import Notfound from './components/not-found/Notfound'
+import AuthGuard from './components/guards/AuthGuard'
 
 import './App.css'
 
@@ -26,11 +27,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path='/destinations/:destinationId/details' element={<Details />} />
-        <Route path='/destinations/:destinationId/edit' element={<Edit />} />
-        <Route path="/create" element={<Create />} />
+        <Route element={<AuthGuard />}>
+          <Route path='/destinations/:destinationId/edit' element={<Edit />} />
+          <Route path="/destinations/create" element={<Create />} />
+          <Route path="/logout" element={<Logout />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>

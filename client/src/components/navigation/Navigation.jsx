@@ -2,12 +2,12 @@ import { useContext, useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router'
-import { UserContext } from '../../contexts/UserContext'
+import useAuth from '../../hooks/useAuth'
 
 export default function Navigation() {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const { email } = useContext(UserContext)
+    const { username, isAuthenticated } = useAuth();
 
     return (
         <header className="absolute inset-x-0 top-0 z-50">
@@ -31,12 +31,12 @@ export default function Navigation() {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     <Link to={'/'} className='text-sm/6 font-semibold text-gray-900'>Home</Link>
-                    <Link to={'/destinations'} className='text-sm/6 font-semibold text-gray-900'>Destinations</Link>
+                    <Link to={'/destinations'} className='text-sm/6 font-semibold text-gray-900'>All Destinations</Link>
                     <Link to={'/about'} className='text-sm/6 font-semibold text-gray-900'>About</Link>
-                    {email
+                    {isAuthenticated
                         ? (
                             <>
-                                <Link to={'/create'} className='text-sm/6 font-semibold text-gray-900'>Create</Link>
+                                <Link to={'/destinations/create'} className='text-sm/6 font-semibold text-gray-900'>Create Destination</Link>
                                 <Link to={'/logout'} className='text-sm/6 font-semibold text-gray-900'>Logout</Link>
                             </>
                         )
@@ -51,12 +51,12 @@ export default function Navigation() {
 
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {email && (
+                    {username && (
                         <div className="flex items-center space-x-3 overflow-hidden">
                             <img className="inline-block w-12 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                             <p className="text-sm md:text-base font-medium text-white">
                                 <span className="font-semibold text-white">
-                                    {email}
+                                    {username}
                                 </span>
                                 <span className="mx-2 text-white">|</span>
                                 Your journey starts here
