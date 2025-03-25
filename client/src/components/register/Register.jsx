@@ -13,13 +13,13 @@ export default function Register() {
 
         const userData = Object.fromEntries(formData);
 
-        if(userData.password !== userData.rePassword){
+        if (userData.password !== userData.rePassword) {
             return window.alert('Password missmatch');
         }
-        
-        const authData = await register(userData.email, userData.password);
 
-        userLoginHandler(authData);
+        const authData = await register(userData.username, userData.email, userData.password);
+
+        userLoginHandler({ ...authData });
         navigate('/');
     }
 
