@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import request from "../utils/request";
 import useAuth from "../hooks/useAuth";
-import usePersistedState from "../hooks/usePersistedState";
 
 const baseUrl = 'http://localhost:3030/data/destinations';
 
