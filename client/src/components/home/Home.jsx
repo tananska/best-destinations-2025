@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router';
 import { useLatestDestinations } from '../../api/destinationsApi'
-import homeVideo from '../../videos/homeVideo.webm'
+import homeVideo from '../../assets/videos/homeVideo.webm'
 
 export default function Home() {
 
