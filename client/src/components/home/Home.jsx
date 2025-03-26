@@ -20,7 +20,8 @@ export default function Home() {
             <p className="text-2xl text-center font-serif">The last 3 destinations added</p>
 
             <div className='flex flex-row min-h-100 justify-center items-center gap-10 bg-gray-100'>
-                {latestDestinations.map(destination => (
+                {latestDestinations.length>0
+                ? latestDestinations.map(destination => (
                     <div key={destination._id} className="bg-base-100 w-96 shadow-sm justify-center">
                         <figure>
                             <img
@@ -35,7 +36,9 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                ))}
+                ))
+                : <p className="text-gray-500 dark:text-gray-400 text-center italic mt-6">No destinations yet.</p>
+            }
             </div>
         </>
     )
