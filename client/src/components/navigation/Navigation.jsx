@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 import useAuth from '../../hooks/useAuth'
 
 export default function Navigation() {
@@ -10,15 +10,8 @@ export default function Navigation() {
     const { username, isAuthenticated } = useAuth();
 
     return (
-        <header className="absolute inset-x-0 top-0 z-50">
-            <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-                <div className="flex lg:flex-1">
-                    <Link to="/" className="-m-1.5 p-1.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8 translate-x-20">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                        </svg>
-                    </Link>
-                </div>
+        <header className="fixed inset-x-0 top-0 z-50 shadow-md h-16 flex items-center justify-center px-8 bg-white">
+            <nav aria-label="Global" className="flex items-center justify-center p-6 lg:px-8">
                 <div className="flex lg:hidden">
                     <button
                         type="button"
@@ -30,35 +23,85 @@ export default function Navigation() {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <Link to={'/'} className='text-sm/6 font-semibold text-gray-900'>Home</Link>
-                    <Link to={'/destinations'} className='text-sm/6 font-semibold text-gray-900'>All Destinations</Link>
-                    <Link to={'/about'} className='text-sm/6 font-semibold text-gray-900'>About</Link>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                        }
+                    >
+                        Home
+                    </NavLink>
+
+                    <NavLink
+                        to="/destinations"
+                        className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                        }
+                    >
+                        All destinations
+                    </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                        }
+                    >
+                        About
+                    </NavLink>
                     {isAuthenticated
                         ? (
                             <>
-                                <Link to={'/destinations/create'} className='text-sm/6 font-semibold text-gray-900'>Create Destination</Link>
-                                <Link to={'/logout'} className='text-sm/6 font-semibold text-gray-900'>Logout</Link>
+                                <NavLink
+                                    to="/destinations/create"
+                                    className={({ isActive }) =>
+                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                                    }
+                                >
+                                    Create destination
+                                </NavLink>
+                                <NavLink
+                                    to="/logout"
+                                    className={({ isActive }) =>
+                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                                    }
+                                >
+                                    Logout
+                                </NavLink>
                             </>
                         )
                         : (
                             <>
-                                <Link to={'/register'} className='text-sm/6 font-semibold text-gray-900'>Register</Link>
-                                <Link to={'/login'} className='text-sm/6 font-semibold text-gray-900'>Login</Link>
+                                <NavLink
+                                    to="/register"
+                                    className={({ isActive }) =>
+                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                                    }
+                                >
+                                    Register
+                                </NavLink>
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
+                                    }
+                                >
+                                    Login
+                                </NavLink>
                             </>
                         )
                     }
 
 
                 </div>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                <div className="mr-0 ml-auto">
                     {username && (
                         <div className="flex items-center space-x-3 overflow-hidden">
                             <img className="inline-block w-12 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                            <p className="text-sm md:text-base font-medium text-white">
-                                <span className="font-semibold text-white">
+                            <p className="text-sm md:text-base font-small text-black">
+                                <span className="font-semibold">
                                     {username}
                                 </span>
-                                <span className="mx-2 text-white">|</span>
+                                <span className="mx-2">|</span>
                                 Your journey starts here
                             </p>
                         </div>
@@ -80,14 +123,24 @@ export default function Navigation() {
                     </div>
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
-                            <div className="space-y-2 py-6">
-                                <Link to={'/'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home</Link>
-                                <Link to={'/catalog'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</Link>
-                                <Link to={'/about'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">About</Link>
-                                <Link to={'/register'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Register</Link>
-                                <Link to={'/login'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</Link>
-                                <Link to={'/create'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Create</Link>
-                                <Link to={'/logout'} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Logout</Link>
+                            <div className="space-y-2 py-6 text-center">
+                                <NavLink to="/" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Home</NavLink>
+                                <NavLink to="/about" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>About</NavLink>
+                                <NavLink to="/destinations" end className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Destinations</NavLink>
+                                {isAuthenticated
+                                    ? (
+                                        <>
+                                            <NavLink to="/destinations/create" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Create Destination</NavLink>
+                                            <NavLink to="/logout" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Logout</NavLink>
+                                        </>
+                                    )
+                                    : (
+                                        <>
+                                            <NavLink to="/register" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Register</NavLink>
+                                            <NavLink to="/login" className={({ isActive }) => `-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}>Login</NavLink>
+                                        </>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
