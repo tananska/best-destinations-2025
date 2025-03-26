@@ -1421,18 +1421,20 @@
         },
         comments: [
             {
-                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "_ownerId": "ff95ca44-3253-4019-8582-d73fa8ff768d",
                 "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
-                "comment": "It is really nice",
-                "_createdOn": 1742930537602,
-                "_id": "6293ee9b-e41a-4527-b527-b18c2f225cad"
+                "comment": "Lovely place !",
+                "username": "Mitko",
+                "_createdOn": 1742981994070,
+                "_id": "c40a9216-c00b-4690-a060-0aaa09fe319b"
             },
             {
-                "_ownerId": "fb6d9efc-56c6-4c54-9fb7-19b38cf40378",
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
-                "comment": "So amazing !",
-                "_createdOn": 1742930618748,
-                "_id": "7fefd201-f3fb-4f13-b1ca-1c68afd173eb"
+                "comment": "Amazing destination !",
+                "username": "Admin",
+                "_createdOn": 1742987792450,
+                "_id": "71bcb2c5-d311-4411-9a67-926f27e63c45"
             }
         ]
     };
