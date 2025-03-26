@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { useActionState, useContext } from "react";
+import { useActionState, useContext, useState } from "react";
 
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
@@ -11,14 +11,25 @@ export default function Login() {
     const navigate = useNavigate();
     const { login } = useLogin();
     const { userLoginHandler } = useContext(UserContext);
+    const [loginError, setLoginError] = useState(false);
 
     const loginHandler = async (_, formData) => {
 
         const values = Object.fromEntries(formData);
-        const authData = await login(values.email, values.password);
+        try {
+            const authData = await login(values.email, values.password);
+            console.log(authData);
 
-        userLoginHandler(authData);
-        navigate('/');
+            userLoginHandler(authData);
+            navigate('/');
+        } catch (error) {
+            setLoginError(true);
+
+            setTimeout(() => {
+                setLoginError(false);
+            }, 4000);
+        }
+
     }
 
     const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
@@ -29,6 +40,15 @@ export default function Login() {
             style={{ backgroundImage: `url(${mountainPicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
+
+                {loginError && (
+                    <div className="flex items-center justify-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+                        <svg className="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fillRule="evenodd" d="M18 10c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-8-3a1 1 0 011 1v3a1 1 0 11-2 0V8a1 1 0 011-1zm0 7a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="font-medium">Invalid email or password. Please try again.</span>
+                    </div>
+                )}
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-xl bg-gray-100 p-6">
                     <form action={loginAction} className="space-y-6">
@@ -52,11 +72,6 @@ export default function Login() {
                                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                                     Password
                                 </label>
-                                <div className="text-sm">
-                                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Forgot password?
-                                    </a>
-                                </div>
                             </div>
                             <div className="mt-2">
                                 <input

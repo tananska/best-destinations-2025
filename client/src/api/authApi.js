@@ -6,7 +6,15 @@ const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
 
-    const login = (email, password) => request('POST', `${baseUrl}/login`, { email, password });
+    const login = async (email, password) => {
+        const response = await request('POST', `${baseUrl}/login`, { email, password });
+
+        if (response.code !== 200) {
+            throw new Error(response.message);
+        }
+
+        return response;
+    }
 
     return {
         login,
@@ -15,7 +23,16 @@ export const useLogin = () => {
 
 export const useRegister = () => {
 
-    const register = (username, email, password) => request('POST', `${baseUrl}/register`, { username, email, password });
+    const register = async (username, email, password) => {
+        const response = await request('POST', `${baseUrl}/register`, { username, email, password });
+
+        if (response.code !== 200) {
+            throw new Error(response.message);
+        }
+
+        return response;
+    }
+
 
     return {
         register,
