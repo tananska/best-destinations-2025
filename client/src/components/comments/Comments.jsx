@@ -9,12 +9,13 @@ export default function Comments() {
 
     const { username, isAuthenticated } = useAuth()
     const { create } = useCreateComment();
-    const { comments } = useGetAllComments(destinationId);
+    const { comments, setComments } = useGetAllComments(destinationId);
 
     const formActionHandler = async (formData) => {
         const comment = formData.get('comment');
         try {
-            await create(destinationId, comment, username);
+            const newComment = await create(destinationId, comment, username);
+            setComments(state => [...state, newComment]);
         } catch (err) {
             console.log(err.message);
         }
@@ -40,18 +41,21 @@ export default function Comments() {
                         </button>
                     </form>
                 )}
-                {comments.map(comment => (
-                    <article key={comment._id} className="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
-                        <footer className="flex justify-between items-center mb-2">
-                            <div className="flex items-center">
-                                <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{comment.username}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{formatDate(comment._createdOn)}</p>
-                            </div>
-                        </footer>
-                        <p className="text-gray-500 dark:text-gray-400">{comment.comment}</p>
-                        <hr className="my-4 border-gray-300 dark:border-gray-700" />
-                    </article>
-                ))}
+                {comments.length > 0
+                    ? comments.map(comment => (
+                        <article key={comment._id} className="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+                            <footer className="flex justify-between items-center mb-2">
+                                <div className="flex items-center">
+                                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{comment.username}</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">{formatDate(comment._createdOn)}</p>
+                                </div>
+                            </footer>
+                            <p className="text-gray-500 dark:text-gray-400">{comment.comment}</p>
+                            <hr className="my-4 border-gray-300 dark:border-gray-700" />
+                        </article>
+                    ))
+                    : <p className="text-gray-500 dark:text-gray-400 text-center italic mt-6">No comments yet.</p>
+                }
             </div>
         </section>
     )

@@ -17,7 +17,8 @@ export const useGetAllComments = (destinationId) => {
     }, [destinationId]);
 
     return {
-        comments
+        comments,
+        setComments,
     };
 }
 

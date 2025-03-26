@@ -1426,15 +1426,15 @@
                 "comment": "Lovely place !",
                 "username": "Mitko",
                 "_createdOn": 1742981994070,
-                "_id": "c40a9216-c00b-4690-a060-0aaa09fe319b"
+                "_id": "0"
             },
             {
-                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
-                "comment": "Amazing destination !",
-                "username": "Admin",
-                "_createdOn": 1742987792450,
-                "_id": "71bcb2c5-d311-4411-9a67-926f27e63c45"
+                "comment": "Beautiful place! I highly recommend it to everyone!",
+                "username": "Peter",
+                "_createdOn": 1742989986247,
+                "_id": "0b3c9f42-a2ba-4eb9-ae34-ff4803cd701c"
             }
         ]
     };
