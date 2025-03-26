@@ -3,6 +3,8 @@ import { useActionState, useContext } from "react";
 import { useRegister } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
+import mountainPicture from '../../assets/images/mountain.jpg'
+
 export default function Register() {
 
     const navigate = useNavigate();
@@ -25,13 +27,16 @@ export default function Register() {
 
     const [_, loginAction, isPending] = useActionState(registerHandler, { email: '', password: '', username: '' });
     return (
-        <section className="relative flex items-center h-screen bg-gray-100">
+        <section
+            className="relative flex items-center h-screen"
+            style={{ backgroundImage: `url(${mountainPicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md rounded-xl bg-gray-100 p-6">
                     <form action={loginAction} className="space-y-6">
                         <div>
-                            <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="username" className="block text-sm/6 font-medium text-black">
                                 Username
                             </label>
                             <div className="mt-2">
@@ -47,7 +52,7 @@ export default function Register() {
 
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="email" className="block text-sm/6 font-medium text-black">
                                     Email address
                                 </label>
                             </div>
@@ -64,7 +69,7 @@ export default function Register() {
 
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="password" className="block text-sm/6 font-medium text-black">
                                     Password
                                 </label>
                             </div>
@@ -81,7 +86,7 @@ export default function Register() {
 
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="rePassword" className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor="rePassword" className="block text-sm/6 font-medium text-black">
                                     Repeat password
                                 </label>
                             </div>
