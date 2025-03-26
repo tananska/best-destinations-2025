@@ -46,7 +46,7 @@ export default function Comments() {
                         <article key={comment._id} className="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
                             <footer className="flex justify-between items-center mb-2">
                                 <div className="flex items-center">
-                                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{comment.username}</p>
+                                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{comment.author}</p>
                                     <p className="text-sm text-gray-600 dark:text-gray-400">{formatDate(comment._createdOn)}</p>
                                 </div>
                             </footer>

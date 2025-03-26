@@ -1424,7 +1424,7 @@
                 "_ownerId": "ff95ca44-3253-4019-8582-d73fa8ff768d",
                 "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
                 "comment": "Lovely place !",
-                "username": "Mitko",
+                "author": "Mitko",
                 "_createdOn": 1742981994070,
                 "_id": "0"
             },
@@ -1432,7 +1432,7 @@
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "destinationId": "7031ba71-ae15-46fe-84d5-07b20b52a738",
                 "comment": "Beautiful place! I highly recommend it to everyone!",
-                "username": "Peter",
+                "author": "Peter",
                 "_createdOn": 1742989986247,
                 "_id": "0b3c9f42-a2ba-4eb9-ae34-ff4803cd701c"
             }

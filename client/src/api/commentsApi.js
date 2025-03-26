@@ -25,7 +25,7 @@ export const useGetAllComments = (destinationId) => {
 export const useCreateComment = () => {
     const { authorizationOptions } = useAuth();
 
-    const create = (destinationId, commentData, username) => request('POST', baseUrl, { destinationId, comment: commentData, username }, authorizationOptions);
+    const create = (destinationId, commentData, author) => request('POST', baseUrl, { destinationId, comment: commentData, author }, authorizationOptions);
 
     return {
         create
