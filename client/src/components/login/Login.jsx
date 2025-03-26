@@ -4,11 +4,13 @@ import { useActionState, useContext } from "react";
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
+import mountainPicture from '../../assets/images/mountain.jpg'
+
 export default function Login() {
 
     const navigate = useNavigate();
     const { login } = useLogin();
-    const { userLoginHandler} = useContext(UserContext);
+    const { userLoginHandler } = useContext(UserContext);
 
     const loginHandler = async (_, formData) => {
 
@@ -22,10 +24,13 @@ export default function Login() {
     const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
     return (
-        <section className="relative flex items-center h-screen bg-gray-100">
+        <section
+            className="relative flex items-center h-screen"
+            style={{ backgroundImage: `url(${mountainPicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-xl bg-gray-100 p-6">
                     <form action={loginAction} className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
