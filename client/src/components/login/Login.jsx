@@ -1,24 +1,24 @@
 import { Link, useNavigate } from "react-router";
-import { useActionState, useContext, useState } from "react";
+import { useActionState, useContext } from "react";
 
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
 import mountainPicture from '../../assets/images/mountain.jpg'
+import useAuthError from "../../hooks/useAuthError";
 
 export default function Login() {
 
     const navigate = useNavigate();
     const { login } = useLogin();
     const { userLoginHandler } = useContext(UserContext);
-    const [loginError, setLoginError] = useState(false);
+    const [loginError, setLoginError] = useAuthError(false);
 
     const loginHandler = async (_, formData) => {
 
         const values = Object.fromEntries(formData);
         try {
             const authData = await login(values.email, values.password);
-            console.log(authData);
 
             userLoginHandler(authData);
             navigate('/');

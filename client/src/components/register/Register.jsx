@@ -1,16 +1,17 @@
 import { Link, useNavigate } from "react-router"
-import { useActionState, useContext, useState } from "react";
+import { useActionState, useContext } from "react";
 import { useRegister } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
 import mountainPicture from '../../assets/images/mountain.jpg'
+import useAuthError from "../../hooks/useAuthError";
 
 export default function Register() {
 
     const navigate = useNavigate();
     const { register } = useRegister();
     const { userLoginHandler } = useContext(UserContext);
-    const [registerError, setRegisterError] = useState(false);
+    const [registerError, setRegisterError] = useAuthError(false);
 
     const registerHandler = async (_, formData) => {
 
