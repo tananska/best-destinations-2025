@@ -9,7 +9,7 @@ export const useLogin = () => {
     const login = async (email, password) => {
         const response = await request('POST', `${baseUrl}/login`, { email, password });
 
-        if (response.code !== 200) {
+        if (!response.accessToken) {
             throw new Error(response.message);
         }
 
@@ -26,7 +26,7 @@ export const useRegister = () => {
     const register = async (username, email, password) => {
         const response = await request('POST', `${baseUrl}/register`, { username, email, password });
 
-        if (response.code !== 200) {
+        if (!response.accessToken) {
             throw new Error(response.message);
         }
 

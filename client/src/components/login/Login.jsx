@@ -12,21 +12,22 @@ export default function Login() {
     const navigate = useNavigate();
     const { login } = useLogin();
     const { userLoginHandler } = useContext(UserContext);
-    const [loginError, setLoginError] = useAuthError(false);
+    const [loginError, setLoginError] = useAuthError(null);
 
     const loginHandler = async (_, formData) => {
 
         const values = Object.fromEntries(formData);
+
         try {
             const authData = await login(values.email, values.password);
 
             userLoginHandler(authData);
             navigate('/');
-        } catch (error) {
-            setLoginError(true);
+        } catch (err) {
+            setLoginError(err.message);
 
             setTimeout(() => {
-                setLoginError(false);
+                setLoginError(null);
             }, 4000);
         }
 
@@ -46,7 +47,7 @@ export default function Login() {
                         <svg className="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" d="M18 10c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-8-3a1 1 0 011 1v3a1 1 0 11-2 0V8a1 1 0 011-1zm0 7a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"></path>
                         </svg>
-                        <span className="font-medium">Invalid email or password. Please try again.</span>
+                        <span className="font-medium">{loginError}</span>
                     </div>
                 )}
 
