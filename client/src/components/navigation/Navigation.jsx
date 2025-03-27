@@ -10,104 +10,88 @@ export default function Navigation() {
     const { username, isAuthenticated } = useAuth();
 
     return (
-        <header className="fixed inset-x-0 top-0 z-50 shadow-md h-16 flex items-center justify-center px-8 bg-white">
-            <nav aria-label="Global" className="flex items-center justify-center p-6 lg:px-8">
-                <div className="flex lg:hidden">
-                    <button
-                        type="button"
-                        onClick={() => setMobileMenuOpen(true)}
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <Bars3Icon aria-hidden="true" className="size-6" />
-                    </button>
-                </div>
-                <div className="hidden lg:flex lg:gap-x-12">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                        }
-                    >
-                        Home
-                    </NavLink>
+        <header className="fixed inset-x-0 top-0 z-50 shadow-md h-16 px-8 bg-white">
+            <nav aria-label="Global" className="p-6 lg:px-8">
+                <div className="flex justify-between items-center">
+                    <div className="flex lg:hidden">
+                        <button
+                            type="button"
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            <Bars3Icon aria-hidden="true" className="size-6" />
+                        </button>
+                    </div>
+                    <div className="-mt-4 hidden lg:flex lg:gap-x-12 justify-center items-center flex-1">
+                        <NavLink to="/" className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
+                        >
+                            Home
+                        </NavLink>
 
-                    <NavLink
-                        to="/destinations"
-                        className={({ isActive }) =>
-                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                        }
-                    >
-                        All Destinations
-                    </NavLink>
-                    <NavLink
-                        to="/about"
-                        className={({ isActive }) =>
-                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                        }
-                    >
-                        About
-                    </NavLink>
-                    {isAuthenticated
-                        ? (
+                        <NavLink to="/destinations" end className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
+                        >
+                            All Destinations
+                        </NavLink>
+
+                        <NavLink to="/about" className={({ isActive }) =>
+                            `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
+                        >
+                            About
+                        </NavLink>
+
+                        {isAuthenticated ? (
                             <>
-                                <NavLink
-                                    to="/destinations/create"
-                                    className={({ isActive }) =>
-                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                                    }
+                                <NavLink to="/destinations/create" className={({ isActive }) =>
+                                    `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
                                 >
                                     Create Destination
                                 </NavLink>
-                                <NavLink
-                                    to="/logout"
-                                    className={({ isActive }) =>
-                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                                    }
+
+                                <NavLink to="/logout" className={({ isActive }) =>
+                                    `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
                                 >
                                     Logout
                                 </NavLink>
                             </>
-                        )
-                        : (
+                        ) : (
                             <>
-                                <NavLink
-                                    to="/register"
-                                    className={({ isActive }) =>
-                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                                    }
+                                <NavLink to="/register" className={({ isActive }) =>
+                                    `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
                                 >
                                     Register
                                 </NavLink>
-                                <NavLink
-                                    to="/login"
-                                    className={({ isActive }) =>
-                                        `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
-                                    }
+
+                                <NavLink to="/login" className={({ isActive }) =>
+                                    `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
                                 >
                                     Login
                                 </NavLink>
                             </>
-                        )
-                    }
+                        )}
+                    </div>
+                    {isAuthenticated && (
+                        <div className="hidden lg:flex items-center space-x-3">
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
+                            >
+                                {username}
+                            </NavLink>
 
-
-                </div>
-                <div className="mr-0 ml-auto">
-                    {username && (
-                        <div className="flex items-center space-x-3 overflow-hidden">
-                            <img className="inline-block w-12 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                            <p className="text-sm md:text-base font-small text-black">
-                                <span className="font-semibold">
-                                    {username}
-                                </span>
-                                <span className="mx-2">|</span>
-                                Your journey starts here
-                            </p>
+                            <img
+                                src="https://media.licdn.com/dms/image/v2/D5612AQE8NiooxTxA3w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1695825196046?e=2147483647&v=beta&t=2zU71mKLxGihkNQB5eMDjCgbD7srasN1gyEqowXMGV4"
+                                alt="User Profile"
+                                className="-mt-1 w-10 h-10 rounded-full border border-gray-300 hover:scale-105 transition-transform duration-300"
+                            />
                         </div>
                     )}
                 </div>
             </nav>
+
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-50" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
