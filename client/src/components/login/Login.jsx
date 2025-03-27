@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router";
-import { useActionState, useContext } from "react";
+import { useContext, useState} from "react";
 
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
-import mountainPicture from '../../assets/images/mountain.jpg'
 import useAuthError from "../../hooks/useSetError";
+import mountainPicture from '../../assets/images/mountain.jpg'
 
 export default function Login() {
 
@@ -14,26 +14,33 @@ export default function Login() {
     const { userLoginHandler } = useContext(UserContext);
     const [loginError, setLoginError] = useAuthError(null);
 
-    const loginHandler = async (_, formData) => {
+    const [inputData, setInputData] = useState({
+        email: '',
+        password: '',
+    });
 
-        const values = Object.fromEntries(formData);
+    const changeHandler = (e) => {
+        setInputData({ ...inputData, [e.target.name]: e.target.value });
+    };
+
+    const formSubmitHandler = async (e) => {
+        e.preventDefault();
 
         try {
-            const authData = await login(values.email, values.password);
-
+            const authData = await login(inputData.email, inputData.password);
             userLoginHandler(authData);
             navigate('/');
         } catch (err) {
             setLoginError(err.message);
+            setInputData(state => ({ ...state, password: '' }))
 
             setTimeout(() => {
                 setLoginError(null);
-            }, 4000);
+            }, 6000);
         }
 
     }
 
-    const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
     return (
         <section
@@ -52,7 +59,7 @@ export default function Login() {
                 )}
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-xl bg-gray-100 p-6">
-                    <form action={loginAction} className="space-y-6">
+                    <form onSubmit={formSubmitHandler} className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                                 Email address
@@ -60,6 +67,8 @@ export default function Login() {
                             <div className="mt-2">
                                 <input
                                     name="email"
+                                    value={inputData.email}
+                                    onChange={changeHandler}
                                     type="email"
                                     required
                                     autoComplete="email"
@@ -77,6 +86,8 @@ export default function Login() {
                             <div className="mt-2">
                                 <input
                                     name="password"
+                                    value={inputData.password}
+                                    onChange={changeHandler}
                                     type="password"
                                     required
                                     autoComplete="current-password"
@@ -88,7 +99,6 @@ export default function Login() {
                         <div>
                             <button
                                 type="submit"
-                                disabled={isPending}
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign in
