@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useDeleteDestination, useGetOneDestination } from "../../api/destinationsApi"
 import useAuth from "../../hooks/useAuth";
-import Comments from "../comments/Comments";
+import Comments from "../destination-comments/Comments";
 import { useState } from "react";
 
 export default function Details() {
