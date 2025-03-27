@@ -5,7 +5,7 @@ import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
 import mountainPicture from '../../assets/images/mountain.jpg'
-import useAuthError from "../../hooks/useAuthError";
+import useAuthError from "../../hooks/useSetError";
 
 export default function Login() {
 

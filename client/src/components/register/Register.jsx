@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router"
-import { useActionState, useContext } from "react";
+import { useContext, useState } from "react";
 import { useRegister } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
 
 import mountainPicture from '../../assets/images/mountain.jpg'
-import useAuthError from "../../hooks/useAuthError";
+import useAuthError from "../../hooks/useSetError";
 
 export default function Register() {
 
@@ -13,28 +13,33 @@ export default function Register() {
     const { userLoginHandler } = useContext(UserContext);
     const [registerError, setRegisterError] = useAuthError(null);
 
-    const registerHandler = async (_, formData) => {
+    const [inputData, setInputData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        rePassword: ''
+    });
 
-        const userData = Object.fromEntries(formData);
+    const changeHandler = (e) => {
+        setInputData({ ...inputData, [e.target.name]: e.target.value });
+    };
 
-        if (userData.password !== userData.rePassword) {
-            return window.alert('Password missmatch');
-        }
+    const registerHandler = async (e) => {
+        e.preventDefault();
 
         try {
-            const authData = await register(userData.username, userData.email, userData.password);
+            const authData = await register(inputData.username, inputData.email, inputData.password, inputData.rePassword);
             userLoginHandler({ ...authData });
             navigate('/');
         } catch (err) {
             setRegisterError(err.message);
+            setInputData(state => ({ ...state, password: '', rePassword: '' }))
 
             setTimeout(() => {
                 setRegisterError(null);
-            }, 4000);
+            }, 6000);
         }
-    }
-
-    const [_, loginAction, isPending] = useActionState(registerHandler, { email: '', password: '', username: '' });
+    };
     return (
         <section
             className="relative flex items-center h-screen"
@@ -51,7 +56,7 @@ export default function Register() {
                     </div>
                 )}
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md rounded-xl bg-gray-100 p-6">
-                    <form action={loginAction} className="space-y-6">
+                    <form onSubmit={registerHandler} className="space-y-6">
                         <div>
                             <label htmlFor="username" className="block text-sm/6 font-medium text-black">
                                 Username
@@ -59,6 +64,8 @@ export default function Register() {
                             <div className="mt-2">
                                 <input
                                     name="username"
+                                    onChange={changeHandler}
+                                    value={inputData.username}
                                     type="text"
                                     required
                                     autoComplete="username"
@@ -76,6 +83,8 @@ export default function Register() {
                             <div className="mt-2">
                                 <input
                                     name="email"
+                                    value={inputData.email}
+                                    onChange={changeHandler}
                                     type="text"
                                     required
                                     autoComplete="email"
@@ -93,6 +102,8 @@ export default function Register() {
                             <div className="mt-2">
                                 <input
                                     name="password"
+                                    value={inputData.password}
+                                    onChange={changeHandler}
                                     type="password"
                                     required
                                     autoComplete="password"
@@ -110,6 +121,8 @@ export default function Register() {
                             <div className="mt-2">
                                 <input
                                     name="rePassword"
+                                    value={inputData.rePassword}
+                                    onChange={changeHandler}
                                     type="password"
                                     required
                                     autoComplete="rePassword"
@@ -121,7 +134,6 @@ export default function Register() {
                         <div>
                             <button
                                 type="submit"
-                                disabled={isPending}
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign up
