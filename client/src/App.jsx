@@ -18,6 +18,7 @@ import AuthGuard from './components/guards/AuthGuard'
 import GuestGuard from './components/guards/GuestGuard'
 
 import './App.css'
+import Profile from './components/profile-page/Profile'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path='/destinations/:destinationId/details' element={<Details />} />
         <Route element={<AuthGuard />}>
+          <Route path="/profile" element={<Profile />} />
           <Route path='/destinations/:destinationId/edit' element={<Edit />} />
           <Route path="/destinations/create" element={<Create />} />
           <Route path="/logout" element={<Logout />} />
