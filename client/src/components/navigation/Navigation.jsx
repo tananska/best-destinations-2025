@@ -38,7 +38,7 @@ export default function Navigation() {
                             `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
                         }
                     >
-                        All destinations
+                        All Destinations
                     </NavLink>
                     <NavLink
                         to="/about"
@@ -57,7 +57,7 @@ export default function Navigation() {
                                         `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`
                                     }
                                 >
-                                    Create destination
+                                    Create Destination
                                 </NavLink>
                                 <NavLink
                                     to="/logout"
