@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router';
 import { useLatestDestinations } from '../../api/destinationsApi'
-import homeVideo from '../../assets/videos/homeVideo.webm'
+import video from '../../assets/videos/homePage.webm'
 
 export default function Home() {
 
@@ -11,7 +11,7 @@ export default function Home() {
         <>
             <div className="relative isolate w-screen h-screen px-6 pt-14 lg:px-8">
                 <div className="absolute inset-0">
-                    <video className="w-full h-full object-cover" src={homeVideo} autoPlay loop muted />
+                    <video className="w-full h-full object-cover" src={video} autoPlay loop muted />
                 </div>
                 <div className="relative z-10 flex flex-col items-center justify-center h-full text-white">
                     <h1 className="text-4xl font-bold">Explore the world with us</h1>
@@ -26,7 +26,7 @@ export default function Home() {
                         <figure>
                             <img
                                 src={destination.imageUrl}
-                                alt="Shoes" />
+                                alt={destination.name} />
                         </figure>
                         <div className="card-body content-center">
                             <h2 className="card-title">{destination.country}</h2>
