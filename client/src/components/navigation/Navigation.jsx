@@ -23,7 +23,7 @@ export default function Navigation() {
                             <Bars3Icon aria-hidden="true" className="size-6" />
                         </button>
                     </div>
-                    <div className="-mt-4 hidden lg:flex lg:gap-x-12 justify-center items-center flex-1">
+                    <div className="-mt-1 hidden lg:flex lg:gap-x-12 justify-center items-center flex-1">
                         <NavLink to="/" className={({ isActive }) =>
                             `text-sm font-semibold ${isActive ? 'text-blue-600 border-b-2 border-blue-500' : 'text-gray-900'}`}
                         >
