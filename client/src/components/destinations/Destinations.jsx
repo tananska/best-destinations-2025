@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import { useGetAllDestinations } from "../../api/destinationsApi"
+import Search from "../destination-search/Search";
 
 export default function Destinations() {
 
@@ -7,8 +8,13 @@ export default function Destinations() {
 
     return (
         <div className="bg-gray-100">
+
+
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 font-mono">Explore by click on picture</h2>
+
+            <Search />
+
+                <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 font-mono mt-6">Explore by click on picture</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {destinations.length > 0
