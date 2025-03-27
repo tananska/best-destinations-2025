@@ -24,7 +24,7 @@ export default function Register() {
         setInputData({ ...inputData, [e.target.name]: e.target.value });
     };
 
-    const registerHandler = async (e) => {
+    const formSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
@@ -56,7 +56,7 @@ export default function Register() {
                     </div>
                 )}
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md rounded-xl bg-gray-100 p-6">
-                    <form onSubmit={registerHandler} className="space-y-6">
+                    <form onSubmit={formSubmitHandler} className="space-y-6">
                         <div>
                             <label htmlFor="username" className="block text-sm/6 font-medium text-black">
                                 Username
