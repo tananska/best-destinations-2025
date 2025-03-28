@@ -45,7 +45,7 @@ export default function Register() {
             className="relative flex items-center h-screen"
             style={{ backgroundImage: `url(${mountainPicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
+            <div className="flex min-h-full m-65 flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-70 sm:mx-auto">
 
                 {registerError && (
                     <div className="flex items-center justify-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">

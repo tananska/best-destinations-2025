@@ -29,7 +29,7 @@ export default function Create() {
         />
       </video>
 
-      <div className="relative z-10 flex items-center justify-center h-full">
+      <div className="relative z-10 flex items-center m-10 justify-center h-full">
         <div className="container bg-gray-100 w-150 p-8 shadow-lg rounded-lg font-style: italic">
           <form action={formSubmit}>
             <div className="mb-4">
